@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                </div>
+                <div class="plus-minus-btn">
+                  <button id="first_class_increase" type="button" class="btn-costome">+</button>
+                  <input id="first_ticket_quantity"class="input-filed" type="text" name="" value="0">
+                  <button id="first_class_dicress" type="button" class="btn-costome">-</button>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    
+                </div>
+                <div class="plus-minus-btn">
+                  <button id="ecoTicketIncrease" type="button" class="btn-costome">+</button>
+                  <input id="ecoTicketQuantity" class="input-filed" type="text" name="" value="0">
+                  <button id="ecoTicketDecrese" type="button" class="btn-costome">-</button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subTotal">$</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$50</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$550</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+    </section>
+      <script>
+          document.getElementById('first_class_increase').addEventListener('click',function(){
+            handleFristClassTicket(true);
+             
+          });
+          document.getElementById('first_class_dicress').addEventListener('click',function(){
+            handleFristClassTicket(false);
+          });
+          
+          document.getElementById('ecoTicketIncrease').addEventListener('click',function(){
+            handleEcoClassTicket(true);
+             
+          });
+          document.getElementById('ecoTicketDecrese').addEventListener('click',function(){
+            handleEcoClassTicket(false);
+          });
+
+      //FirstClass Count 
+          function handleFristClassTicket(isIncrease){
+            const firstClassTicketInput = document.getElementById('first_ticket_quantity');
+             const firstTicketCount =parseInt(firstClassTicketInput.value);
+             //const newFirstTicketCount =  firstTicketCount + 1;
+             let  newFirstTicketCount = firstTicketCount;
+             if(isIncrease == true){
+                newFirstTicketCount = firstTicketCount +1;
+             }
+             if(isIncrease == false && firstTicketCount > 0){
+                newFirstTicketCount = firstTicketCount - 1;
+             }
+             firstClassTicketInput.value= newFirstTicketCount;
+             const totalFirstClassTicketPrice = newFirstTicketCount * 150;
+             //console.log(totalFirstClassTicketPrice); 
+             document.getElementById('subTotal').innerText ='$'+totalFirstClassTicketPrice;
+          };
+
+      //Eco Class Ticket count
+          function handleEcoClassTicket(isIncrease){
+            const ecoClassTicketInput = document.getElementById('ecoTicketQuantity');
+             const ecoTicketCount =parseInt(ecoClassTicketInput.value);
+             //const newFirstTicketCount =  firstTicketCount + 1;
+             let  newEcoTicketCount = ecoTicketCount;
+             if(isIncrease == true){
+                newEcoTicketCount = ecoTicketCount +1;
+             }
+             if(isIncrease == false && ecoTicketCount > 0){
+                newEcoTicketCount = ecoTicketCount - 1;
+             }
+             ecoClassTicketInput.value= newEcoTicketCount;
+             const totalEcoClassTicketPrice = newEcoTicketCount * 100;
+             console.log(totalFirstClassTicketPrice); 
+            document.getElementById('subTotal').innerText ='$'+totalEcoClassTicketPrice;
+          };
+   
+          
+         
+      </script>
+    <!--Thank You-->
+</body>
+
+</html>
